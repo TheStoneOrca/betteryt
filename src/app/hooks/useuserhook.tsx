@@ -19,7 +19,7 @@ type UserHook = {
   error: boolean;
 };
 
-export default function GetUserHook() {
+export default function useUser() {
   const [userHookDetails, setHookDetails] = useState<UserHook>({
     isLoaded: false,
     isSignedIn: false,

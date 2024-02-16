@@ -7,9 +7,12 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { AuthorizeEmailCode } from "@/app/actions/authorizecode";
 import reactsecurestorage from "react-secure-storage";
+import { useRouter } from "next/navigation";
 
 export default function EmailAuthCard(props: { userid: number }) {
   const [error, setError] = useState<string>();
+
+  const router = useRouter();
 
   return (
     <Card className="h-64">
@@ -30,7 +33,7 @@ export default function EmailAuthCard(props: { userid: number }) {
                     res.userSession as string
                   );
 
-                  window.location.href = "/home";
+                  router.push("/home");
                 }
               });
             } catch (error) {

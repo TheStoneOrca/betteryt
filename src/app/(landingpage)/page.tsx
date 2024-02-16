@@ -5,12 +5,12 @@ import { cn } from "@/lib/utils";
 import StartNowBtn from "./__components/startnowbtn";
 import Cards from "./__components/cards";
 import { useEffect } from "react";
-import GetUserHook from "../hooks/getuserhook";
+import useUser from "../hooks/useuserhook";
 import { Loader2Icon } from "lucide-react";
 import ContinueBtn from "./__components/continuebtn";
 
 export default function LandingPage() {
-  const { isSignedIn, isLoaded } = GetUserHook();
+  const { isSignedIn, isLoaded } = useUser();
   useEffect(() => {
     document.title = "CocoTube";
   }, []);
