@@ -1,14 +1,17 @@
-import Image from "next/image";
+"use client";
+
 import Header from "./__components/header";
-import { Fredoka } from "next/font/google";
 import { cn } from "@/lib/utils";
 import ContinueButton from "./__components/continuebtn";
 import Cards from "./__components/cards";
-const fredoka = Fredoka({ weight: ["400"], subsets: ["latin"] });
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    document.title = "CocoTube";
+  }, []);
   return (
-    <div className={cn("flex flex-col min-h-screen", fredoka.className)}>
+    <div className={cn("flex flex-col min-h-screen")}>
       <div className="flex-grow justify-center mt-1 ml-1">
         <div className="mb-5">
           <Header />
