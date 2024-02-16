@@ -3,10 +3,10 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export default function ContinueButton() {
+export default function ContinueBtn() {
   return (
     <Button asChild>
-      <Link href="/signup">Start Now</Link>
+      <Link href="/home">Continue</Link>
     </Button>
   );
 }
