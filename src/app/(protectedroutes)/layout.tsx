@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import useUser from "../hooks/useuserhook";
 import { useRouter } from "next/navigation";
+import Sidebar from "@/components/sidebar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { isSignedIn, isLoaded } = useUser();
@@ -14,5 +15,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       router.push("/signup");
     }
   }, [isLoaded]);
-  return <div>{children};</div>;
+  return (
+    <div className="flex h-full">
+      <Sidebar />
+      {children}
+    </div>
+  );
 }

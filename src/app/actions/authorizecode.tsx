@@ -26,6 +26,10 @@ export async function AuthorizeEmailCode(data: FormData) {
       [data.get("userid")]
     );
 
+    await db.query("DELETE FROM emailauthtokens WHERE tokenid = $1", [
+      isAuthToken.rows[0].tokenid,
+    ]);
+
     await db.end();
 
     const userJWT = jwt.sign(
