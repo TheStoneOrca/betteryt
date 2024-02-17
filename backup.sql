@@ -12,3 +12,11 @@ CREATE TABLE emailauthtokens(
   tokenkey TEXT,
   tokenfor INT REFERENCES users(userid)
 );
+
+CREATE TABLE channels(
+  channelid SERIAL PRIMARY KEY,
+  channelname TEXT,
+  channeldesc TEXT,
+  channelprofile TEXT,
+  channelcreator INT REFERENCES users(userid)
+)

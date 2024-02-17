@@ -2,6 +2,7 @@
 
 import {
   Camera,
+  ClipboardIcon,
   Home,
   ListStartIcon,
   PersonStanding,
@@ -23,10 +24,10 @@ export default function Sidebar() {
     <div
       className={cn(
         "h-full dark:bg-black bg-white dark:text-white text-black",
-        sideBarOpen ? "w-64 transition-all" : "w-32 transition-all"
+        sideBarOpen ? "w-72 transition-all" : "w-32 transition-all"
       )}
     >
-      <div className="flex items-center mb-4    ">
+      <div className="flex items-center mb-4">
         <Button
           onClick={() => setOpen(!sideBarOpen)}
           className="dark:bg-black bg-white w-16"
@@ -70,6 +71,20 @@ export default function Sidebar() {
               >
                 <Camera />
                 <div className={cn(!sideBarOpen && "hidden")}>Studio</div>
+              </Button>
+              <Button
+                className="flex w-full justify-start gap-x-2"
+                variant={
+                  pathname === "/create/channel" ? "secondary" : "default"
+                }
+                onClick={() => {
+                  router.push("/create/channel");
+                }}
+              >
+                <ClipboardIcon />
+                <div className={cn(!sideBarOpen && "hidden")}>
+                  Create Channel
+                </div>
               </Button>
             </div>
           </div>

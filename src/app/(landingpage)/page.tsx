@@ -15,7 +15,7 @@ export default function LandingPage() {
     document.title = "CocoTube";
   }, []);
   return (
-    <div className={cn("flex flex-col min-h-screen")}>
+    <div className={cn("flex flex-col min-h-screen dark:text-white")}>
       <div className="flex-grow justify-center mt-1 ml-1">
         <div className="mb-5">
           <Header />

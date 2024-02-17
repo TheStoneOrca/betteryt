@@ -22,7 +22,7 @@ export async function AuthorizeEmailCode(data: FormData) {
     }
 
     const userDetails = await db.query(
-      "SELECT username, email, fname, lname FROM users WHERE userid = $1",
+      "SELECT userid, username, email, fname, lname FROM users WHERE userid = $1",
       [data.get("userid")]
     );
 
