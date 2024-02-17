@@ -6,7 +6,7 @@ import Header from "./__components/header";
 
 export default function SignUpPage() {
   useEffect(() => {
-    document.title = "Signup";
+    document.title = "Sign Up";
   }, []);
   return (
     <div className="flex flex-col">

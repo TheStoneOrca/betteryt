@@ -64,13 +64,13 @@ export default function Sidebar() {
               </Button>
               <Button
                 className="flex w-full justify-start gap-x-2"
-                variant={pathname === "/studio" ? "secondary" : "default"}
+                variant={pathname === "/post" ? "secondary" : "default"}
                 onClick={() => {
-                  router.push("/studio");
+                  router.push("/post");
                 }}
               >
                 <Camera />
-                <div className={cn(!sideBarOpen && "hidden")}>Studio</div>
+                <div className={cn(!sideBarOpen && "hidden")}>Create Video</div>
               </Button>
               <Button
                 className="flex w-full justify-start gap-x-2"
@@ -96,13 +96,11 @@ export default function Sidebar() {
               <Button
                 className="flex w-full justify-start gap-x-2"
                 onClick={() => {
-                  router.push("/studio/stats");
+                  router.push("/studio");
                 }}
               >
                 <ListStartIcon />{" "}
-                <div className={cn(!sideBarOpen && "hidden")}>
-                  Your Statistics
-                </div>
+                <div className={cn(!sideBarOpen && "hidden")}>Studio</div>
               </Button>
               <Button
                 className="flex w-full justify-start gap-x-2"

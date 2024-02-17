@@ -19,4 +19,13 @@ CREATE TABLE channels(
   channeldesc TEXT,
   channelprofile TEXT,
   channelcreator INT REFERENCES users(userid)
+);
+
+CREATE TABLE videos(
+  videoid SERIAL PRIMARY KEY,
+  videotitle TEXT,
+  videodesc TEXT,
+  videofile TEXT,
+  videothumbnail TEXT,
+  videochannel INT REFERENCES channels(channelid)
 )

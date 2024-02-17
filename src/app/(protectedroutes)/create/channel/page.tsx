@@ -5,15 +5,19 @@ import CreateChannelForm from "./__components/channelform";
 import Header from "./__components/header";
 import useUser from "@/app/hooks/useuserhook";
 import { Loader2Icon } from "lucide-react";
+import { useEffect } from "react";
 
 export default function CreateChannel() {
   const { isLoaded, user } = useUser();
-  console.log(user);
+
+  useEffect(() => {
+    document.title = "Create A Channel";
+  }, []);
   return (
     <>
       {isLoaded && user ? (
         <div className="flex flex-col w-full gap-y-2">
-          <div className="flex justify-center items-center text-center">
+          <div className="flex justify-center items-center text-center mt-1">
             <Header />
           </div>
           <div className="flex justify-center items-center h-[75vh]">
@@ -26,11 +30,11 @@ export default function CreateChannel() {
               terms of service.
             </Link>
           </div>
-          <div className="mt-10" />
+          <div className="mt-12" />
         </div>
       ) : (
-        <div className="flex justify-center">
-          <Loader2Icon className="animate-spin" />
+        <div className="flex w-full justify-center items-center">
+          <Loader2Icon className="animate-spin w-72 h-72" />
         </div>
       )}
     </>
