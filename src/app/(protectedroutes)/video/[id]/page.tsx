@@ -44,7 +44,7 @@ export default function VideoPage() {
             />
           </div>
           <div className="flex justify-center items-center text-center">
-            <div className="flex flex-col justify-start w-96 mt-1 gap-y-2 items-start">
+            <div className="flex flex-col justify-start w-[1000px] mt-1 gap-y-2 items-start">
               <VideoTitle title={videoDetails.videotitle} />
               <VideoCreator
                 channelicon={videoDetails.channelprofile}

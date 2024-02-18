@@ -3,7 +3,7 @@
 import GetAllVideos from "@/app/actions/getallvideos";
 import { Loader2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
-import VideoCard from "./__components/video";
+import VideoCard from "@/components/video";
 
 export default function HomePage() {
   const [videos, setVideos] = useState<Array<any>>();
@@ -13,7 +13,6 @@ export default function HomePage() {
     try {
       document.title = "Home";
       GetAllVideos().then((res: any) => {
-        console.log(res.videos);
         if (res.error) {
           setError(res.error);
         } else {

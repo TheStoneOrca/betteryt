@@ -132,13 +132,15 @@ export default function VideoPlayer(props: {
     <>
       {ready ? (
         <div>
-          <div className="w-96">
+          <div className="w-[1000px]">
             <video
               onClick={() => HandleVideoClick()}
               onEnded={() => VideoEnd()}
               ref={videoRef}
               id="video"
-              width={750}
+              width={900}
+              height={100}
+              className="object-cover w-[1000px] h-[750px]"
               onTimeUpdate={(e) => ProgressVideo(e as any)}
             >
               <source src={props.video} />

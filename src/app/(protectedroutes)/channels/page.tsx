@@ -10,7 +10,7 @@ import ChannelCard from "./__components/channelcard";
 export default function ChannelsPage() {
   const [channels, setChannels] = useState<Array<any>>();
   const { isLoaded, user } = useUser();
-  const { isReady, channel } = useChannel();
+  const { isReady, channel, isInAChannel } = useChannel();
 
   useEffect(() => {
     if (!isLoaded || !user) return;
@@ -28,9 +28,10 @@ export default function ChannelsPage() {
       setChannels([]);
     }
   }, [isLoaded]);
+
   return (
     <div className="flex w-full">
-      {channels && channel && isReady ? (
+      {channels && isReady ? (
         <div className="ml-10 mt-5 flex gap-x-10">
           {channels.map((channelDetails) => (
             <ChannelCard
@@ -38,7 +39,9 @@ export default function ChannelsPage() {
               channelid={channelDetails.channelid}
               channelname={channelDetails.channelname}
               channelprofile={channelDetails.channelprofile}
-              currentchannel={channel.channelid || undefined}
+              currentchannel={
+                isInAChannel && channel ? channel.channelid : undefined
+              }
             />
           ))}
         </div>
