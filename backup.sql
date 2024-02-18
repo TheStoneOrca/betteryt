@@ -28,4 +28,4 @@ CREATE TABLE videos(
   videofile TEXT,
   videothumbnail TEXT,
   videochannel INT REFERENCES channels(channelid)
-)
+);
