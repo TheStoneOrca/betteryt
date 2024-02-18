@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { Eye } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function SignUpForm() {
@@ -136,6 +137,8 @@ export default function SignUpForm() {
               </div>
 
               <Button type="submit">Create Account</Button>
+
+              <Link href="/signin">Already have an account? Sign In.</Link>
             </form>
           </CardContent>
         </Card>

@@ -5,6 +5,7 @@ import SaveVideoSession from "@/app/actions/savevideotime";
 import { Button } from "@/components/ui/button";
 import { Loader2Icon, Pause, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import "./progressbarstyle.css";
 
 export default function VideoPlayer(props: {
   video: string;
@@ -142,7 +143,7 @@ export default function VideoPlayer(props: {
             >
               <source src={props.video} />
             </video>
-            <div className="flex items-center">
+            <div className="flex items-center mt-1">
               {videoPaused ? (
                 <Button onClick={() => UnPauseVideo()}>
                   <Play />

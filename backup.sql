@@ -27,7 +27,8 @@ CREATE TABLE videos(
   videodesc TEXT,
   videofile TEXT,
   videothumbnail TEXT,
-  videochannel INT REFERENCES channels(channelid)
+  videochannel INT REFERENCES channels(channelid),
+  datecreated DATE
 );
 
 CREATE TABLE videosessions(

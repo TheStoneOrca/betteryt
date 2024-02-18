@@ -2,7 +2,7 @@
 
 import DbInit from "./dbinit";
 
-export default async function GetVideo(videoid: number) {
+export default async function GetUsersChannels(userid: number) {
   try {
     const database = await DbInit();
 
@@ -12,14 +12,14 @@ export default async function GetVideo(videoid: number) {
 
     const db = database.db;
 
-    const video = await db.query(
-      "SELECT * FROM videos JOIN channels ON channels.channelid = videos.videochannel WHERE videoid = $1",
-      [videoid]
+    const channels = await db.query(
+      "SELECT * FROM channels WHERE channelcreator = $1",
+      [userid]
     );
 
     await db.end();
 
-    return { success: true, video: video.rows[0] };
+    return { success: true, channels: channels.rows };
   } catch (error) {
     console.error(error);
     return { error: "Unexpected Server Error" };

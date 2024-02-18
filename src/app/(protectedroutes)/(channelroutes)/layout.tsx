@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!isReady) return;
     if (!isInAChannel) {
-      router.push("/home");
+      router.push("/create/channel");
     }
   }, [isReady]);
   return <div className="flex h-full w-full">{children}</div>;

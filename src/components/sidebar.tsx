@@ -105,11 +105,13 @@ export default function Sidebar() {
               <Button
                 className="flex w-full justify-start gap-x-2"
                 onClick={() => {
-                  router.push(`/channel/id`);
+                  router.push("/channels");
                 }}
               >
                 <PersonStanding />
-                <div className={cn(!sideBarOpen && "hidden")}>Your Channel</div>
+                <div className={cn(!sideBarOpen && "hidden")}>
+                  Your Channels
+                </div>
               </Button>
               <Button
                 className="flex w-full justify-start gap-x-2"
