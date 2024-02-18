@@ -29,3 +29,10 @@ CREATE TABLE videos(
   videothumbnail TEXT,
   videochannel INT REFERENCES channels(channelid)
 );
+
+CREATE TABLE videosessions(
+  sessionid SERIAL PRIMARY KEY,
+  sessiontime TEXT,
+  sessionvideo INT REFERENCES videos(videoid),
+  sessionowner INT REFERENCES users(userid)
+);
