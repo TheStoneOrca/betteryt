@@ -26,9 +26,8 @@ export default function HomePage() {
       {videos ? (
         <div className="flex gap-x-2">
           {videos.map((video) => (
-            <div className="ml-5 mt-5">
+            <div className="ml-5 mt-5" key={video.videoid}>
               <VideoCard
-                key={video.videoid}
                 title={video.videotitle}
                 channelid={video.channelid}
                 creator={video.channelname}

@@ -8,6 +8,7 @@ import { Loader2Icon } from "lucide-react";
 import useUser from "@/app/hooks/useuserhook";
 import VideoTitle from "./__components/title";
 import VideoCreator from "./__components/videocreator";
+import AddVideoView from "@/app/actions/viewvideo";
 
 export default function VideoPage() {
   const { user, isLoaded } = useUser();
@@ -19,6 +20,7 @@ export default function VideoPage() {
 
   useEffect(() => {
     try {
+      AddVideoView(Number(id));
       GetVideo(Number(id)).then((res) => {
         if (res.error) {
           console.error(res.error);

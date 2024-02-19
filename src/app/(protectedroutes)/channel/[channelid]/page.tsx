@@ -8,19 +8,25 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import ChannelIcon from "./__components/channelicon";
 import ChannelNameHeader from "./__components/channelnameheader";
+import useUser from "@/app/hooks/useuserhook";
+import CheckIfSubbed from "@/app/actions/checkifsubbed";
 
 export default function ChannelPage() {
   const [channelDetails, setChannelDetails] = useState<{
     channel: any;
     videos: Array<any>;
+    subscriptions: number;
   }>();
-  const [showingVideos, setShowingVideos] = useState<boolean>();
+  const [subscribed, setSubscribed] = useState<boolean>(false);
+
+  const { isLoaded, user } = useUser();
 
   const { channelid } = useParams();
   const router = useRouter();
 
   useEffect(() => {
     try {
+      if (!isLoaded || !user) return;
       GetChannelDetails(Number(channelid)).then((res) => {
         if (res.error) {
           console.error(res.error);
@@ -30,18 +36,26 @@ export default function ChannelPage() {
           setChannelDetails({
             channel: res.channel.channel,
             videos: res.channel.videos,
+            subscriptions: res.channel.subscribes,
           });
-          console.log(res);
+        }
+      });
+      CheckIfSubbed(user.userid, Number(channelid)).then((res) => {
+        if (res.error) {
+          console.error(res.error);
+          router.push("/home");
+        } else {
+          setSubscribed(res.subbed as any);
         }
       });
     } catch (error) {
       console.error(error);
       router.push("/home");
     }
-  }, []);
+  }, [isLoaded]);
   return (
     <div className="flex w-full">
-      {channelDetails ? (
+      {channelDetails && isLoaded && user ? (
         <div className="w-full">
           <div className="flex justify-center items-center text-center">
             <ChannelNameHeader
@@ -49,7 +63,13 @@ export default function ChannelPage() {
             />
           </div>
           <div className="flex flex-col justify-start ml-10 mb-3">
-            <ChannelIcon iconUrl={channelDetails?.channel.channelprofile} />
+            <ChannelIcon
+              iconUrl={channelDetails?.channel.channelprofile}
+              channelid={channelDetails.channel.channelid}
+              userid={user.userid}
+              alreadySubscribed={subscribed}
+              subscribes={channelDetails.subscriptions}
+            />
             <h1 className="lg:text-md md:text-lg sm:text-lg flex">
               {channelDetails.channel.channeldesc}
             </h1>

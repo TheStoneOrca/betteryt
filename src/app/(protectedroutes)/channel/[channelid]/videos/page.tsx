@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 
 export default function ChannelVideoPage() {
   const [videos, setVideos] = useState<Array<any>>();
+
   const { channelid } = useParams();
   const router = useRouter();
 
@@ -42,7 +43,7 @@ export default function ChannelVideoPage() {
               {videos[0].channelname}
             </Link>
           </div>
-          <div className="flex gap-x-10 mt-10 ml-10">
+          <div className="flex gap-x-10 mt-10 ml-10 w-full">
             {videos.map((video) => (
               <VideoCard
                 key={video.videoid}

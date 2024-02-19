@@ -40,7 +40,7 @@ export default async function CreateVideo(data: FormData) {
     const videoFile = await videoFileFetch.json();
 
     await db.query(
-      "INSERT INTO videos(videotitle, videodesc, videofile, videothumbnail, videochannel, datecreated) VALUES($1, $2, $3, $4, $5, $6)",
+      "INSERT INTO videos(videotitle, videodesc, videofile, videothumbnail, videochannel, datecreated, views) VALUES($1, $2, $3, $4, $5, $6, $7)",
       [
         data.get("videotitle"),
         data.get("videodesc"),
@@ -48,6 +48,7 @@ export default async function CreateVideo(data: FormData) {
         videoThumbnail.secure_url,
         data.get("channelid"),
         new Date(),
+        0,
       ]
     );
 

@@ -37,3 +37,9 @@ CREATE TABLE videosessions(
   sessionvideo INT REFERENCES videos(videoid),
   sessionowner INT REFERENCES users(userid)
 );
+
+CREATE TABLE subscribes(
+  subscribeid SERIAL PRIMARY KEY,
+  subscribingperson INT REFERENCES users(userid),
+  subscribingto INT REFERENCES channels(channelid)
+);

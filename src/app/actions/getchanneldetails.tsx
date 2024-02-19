@@ -22,11 +22,20 @@ export default async function GetChannelDetails(channelid: number) {
       [channelid]
     );
 
+    const subscribes = await db.query(
+      "SELECT * FROM subscribes WHERE subscribingto = $1",
+      [channelid]
+    );
+
     await db.end();
 
     return {
       success: true,
-      channel: { channel: channel.rows[0], videos: videos.rows },
+      channel: {
+        channel: channel.rows[0],
+        videos: videos.rows,
+        subscribes: subscribes.rows.length,
+      },
     };
   } catch (error) {
     console.error(error);

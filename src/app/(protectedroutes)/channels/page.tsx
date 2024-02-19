@@ -35,6 +35,7 @@ export default function ChannelsPage() {
         <div className="ml-10 mt-5 flex gap-x-10">
           {channels.map((channelDetails) => (
             <ChannelCard
+              key={channelDetails.channelid}
               channeldescription={channelDetails.channeldesc}
               channelid={channelDetails.channelid}
               channelname={channelDetails.channelname}
