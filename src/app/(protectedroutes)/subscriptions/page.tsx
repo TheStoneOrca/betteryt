@@ -1,5 +1,5 @@
 "use client"
 
 export default function SubscriptionsPage() {
-     return <div><\div>
+     return <div></div>
 }
